@@ -48,7 +48,7 @@ namespace ClientApp.Controllers
             var apiClient = new HttpClient();
             apiClient.SetBearerToken(tokenResponse.AccessToken!); // AccessToken is always non-null when IsError is false
 
-            var response = await apiClient.GetAsync("https://localhost:44302/api/securedata");
+            var response = await apiClient.GetAsync("https://localhost:44302/identity");
             if (!response.IsSuccessStatusCode)
             {
                 Console.WriteLine(response.StatusCode);

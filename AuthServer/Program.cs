@@ -12,14 +12,15 @@ builder.Services.AddIdentityServer()
             AllowedGrantTypes = GrantTypes.ClientCredentials, // OAuth2 Authorization Code Grant
             ClientSecrets = { new Secret("secret".Sha256()) },
 
-            AllowedScopes = { "api1" }, // OpenID Connect scopes
+            AllowedScopes = { "api1", "apigee" }, // OpenID Connect scopes
             AllowOfflineAccess = true, // Enable refresh tokens
             RequirePkce = false
         }
     })
     .AddInMemoryApiScopes(new List<ApiScope>
     {
-        new ApiScope("api1", "My API")
+        new("api1", "My API"),
+        new("apigee", "My apigee")
     });
 
 var app = builder.Build();

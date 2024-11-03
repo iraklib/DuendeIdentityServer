@@ -15,14 +15,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-//builder.Services.AddAuthorization(options =>
-//{
-//    options.AddPolicy("ApiScope", policy =>
-//    {
-//        policy.RequireAuthenticatedUser();
-//        policy.RequireClaim("scope", "api1");
-//    });
-//});
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("ApiScope", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+        policy.RequireClaim("scope", "apigee", "api1");
+    });
+});
 
 
 builder.Services.AddControllers();
@@ -47,7 +47,7 @@ app.MapGet("identity", (ClaimsPrincipal user) => user.Claims.Select(c => new { c
     .RequireAuthorization();
 
 app.MapGet("/api/securedata", () => "This is a secure API")
-    .RequireAuthorization();
+    .RequireAuthorization("ApiScope");
 
 app.MapControllers();
 

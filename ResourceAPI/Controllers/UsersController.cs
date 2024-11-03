@@ -7,7 +7,7 @@ namespace ResourceAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize("ApiScope")]
     public class UsersController : ControllerBase
     {
         // GET: api/<UsersController>

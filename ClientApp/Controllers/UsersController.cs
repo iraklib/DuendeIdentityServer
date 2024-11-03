@@ -33,7 +33,7 @@ namespace ClientApp.Controllers
                 Address = disco.TokenEndpoint,
                 ClientId = "MPC",
                 ClientSecret = "secret",
-                Scope = "api1"
+                Scope = "apigee"
             });
 
             if (tokenResponse.IsError)
