@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Users Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Click the button below to call the secure API:</p>
+    <form method="post" action="/Home/CallUsers">
+        <button type="submit" class="btn btn-primary">Call Users</button>
+    </form>
+    <div>
+        @if (ViewBag.ApiResponse != null)
+        {
+            <p>API Response: @ViewBag.ApiResponse</p>
+        }
+    </div>
+</div>
